@@ -48,6 +48,11 @@ app.get('/register', (req, res) => {
 });
 
 
+app.get('/saibamais', (req, res) => {    
+    res.sendFile(path.join(__dirname, 'views', 'saibamais.html'));
+});
+
+
 app.get('/template', (req, res) => {    
     res.sendFile(path.join(__dirname, 'views', 'template.html'));
 });
