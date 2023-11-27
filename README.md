@@ -6,5 +6,5 @@ To run the examples:
 2. `cd puc`
 3. `npm install`
 4. `npm run build`
-5. `npm npm start`
+5. `npm start`
 6. [http://localhost:3000](http://localhost:3000)
