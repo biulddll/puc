@@ -1,66 +1,56 @@
-// Importando o módulo Express
 const express = require('express');
-
 // Criando uma instância do Express
 const app = express();
-
-
 const path = require('path');
 
+const router = express.Router();
+app.use('/',router);
 
-// Define a pasta 'views' como o local dos arquivos de visualização
-app.use(express.static(path.join(__dirname, 'views')));
+router.get('/r', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'login.html'));
+})
+
+app.use(express.static(path.join(__dirname)));
 
 
-// Rota principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
-});
-
-
-app.get('/', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
-});
-
-
-app.get('/login', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+	 res.sendFile(path.join(__dirname,  'login.html'));
 });
 
 
 app.get('/ongs', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'ongs.html'));
+    res.sendFile(path.join(__dirname,  'ongs.html'));
 });
 
 
 app.get('/particular', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'particular.html'));
+    res.sendFile(path.join(__dirname,  'particular.html'));
 });
 
 
 app.get('/planos', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'planos.html'));
+    res.sendFile(path.join(__dirname,  'planos.html'));
 });
 
 
 app.get('/register', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'register.html'));
+    res.sendFile(path.join(__dirname, 'register.html'));
 });
 
 
 app.get('/saibamais', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'saibamais.html'));
+    res.sendFile(path.join(__dirname,  'saibamais.html'));
 });
 
 
 app.get('/template', (req, res) => {    
-    res.sendFile(path.join(__dirname, 'views', 'template.html'));
+    res.sendFile(path.join(__dirname,  'template.html'));
 });
-
-
 
 // Configurando o servidor para escutar na porta 3000
 const port = 3000;
 app.listen(port, () => {
     console.log(`Servidor está rodando em http://localhost:${port}`);
 });
+
+

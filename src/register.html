@@ -15,7 +15,7 @@
         <div class="row gx-5">
             <div class="col-md-6">
                 <h2>Realize o seu cadastro</h2>
-                <form>
+                <form action="login" method="GET"  onsubmit="return onsubmitValideteForm(this);">
                     <div class="form-floating mb-3">
                         <br>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome">
@@ -60,7 +60,10 @@
                             </label>
                         </div>
                     </div>
-                    <a class="btn btn-primary" href="template.html" role="button">Cadastrar</a>
+                    <!-- <a class="btn btn-primary" href="template.html"  id="btn" role="button">Cadastrar</a> -->
+                    <button  id="btn"  class="btn btn-primary" type="submit">Entrar</button>
+                  
+                    <button  onclick="onsubmitValideteForm(this);"  class="btn btn-primary" type="submit">Carregar</button>
                 </form>
             </div>
             <div class="col-md-6">
@@ -77,3 +80,79 @@
     </div>
 </body>
 </html>
+
+
+<script type="text/javascript">
+    const urlBase = "https://json-server-vercel-liart.vercel.app";    
+    const headers = { "Content-Type": "application/json",}
+    
+   
+    
+    function onsubmitValideteForm(event) {
+        
+        return false;
+    }
+
+     
+    const  myTteste = ()=> {
+        document.getElementById("name").value="John";
+        document.getElementById("lastname").value="Rocha";
+        document.getElementById("email").value="email@example";
+        document.getElementById("number").value="123";
+        document.getElementById("password").value="password";
+        document.getElementById("newsletter").checked = true;
+        document.getElementById("agree-term").checked = true;        
+    }
+
+
+    const setUsuarios = async (data)=> {    
+        const url = urlBase + '/usuario';    
+        const response = await  fetch(url, { 
+            method: 'POST', 
+            headers: headers,
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        console.log("Success:", result);
+        return result;
+    }
+    
+       
+    
+    const btn = document.getElementById("btn");    
+    btn.addEventListener("click", async () => {
+        let valid=true;
+        const name = document.getElementById("name").value;
+        const lastname = document.getElementById("lastname").value;
+        const email = document.getElementById("email").value;
+        const number = document.getElementById("number").value;
+        const password = document.getElementById("password").value;                
+    
+        if (email ==null ||email === undefined ||email =='' ){
+            alert('Campo obrigatório [] não preenchido');
+            valid=false;
+        }
+        if (password ==null ||password === undefined ||password =='' ){
+            alert('Campo obrigatório não [] preenchido');
+            valid=false;
+        }
+
+        if(valid){
+            const data =  {
+                name: name,
+                lastname: lastname,
+                email: email,
+                number: number,
+                password: password
+		   } 
+           console.log(data);
+           const response = await setUsuarios(data);
+           console.log(response);
+        }
+        return valid;
+    });
+    
+     </script>   
+          
+    
+    
