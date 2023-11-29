@@ -13,11 +13,6 @@ router.get('/r', function (req, res) {
 app.use(express.static(path.join(__dirname)));
 
 
-app.get('/', (req, res) => {
-	 res.sendFile(path.join(__dirname,  'login.html'));
-});
-
-
 app.get('/ongs', (req, res) => {    
     res.sendFile(path.join(__dirname,  'ongs.html'));
 });

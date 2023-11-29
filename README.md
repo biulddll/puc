@@ -1,13 +1,14 @@
-# app run
+# app
 
-IDE recomendada
+## IDE recomendada
+
+```sh
 Visual Code
+```
 
-Api in Vercel
-https://json-server-vercel-liart.vercel.app/usuario
+## To Run:
 
-To run the examples:
-
+```sh
 1. `git clone https://github.com/biulddll/puc.git`
 2. `cd puc`
 3. `npm install`
@@ -15,8 +16,21 @@ To run the examples:
 5. `npm start`
 6. [http://localhost:3000](http://localhost:3000)
 
+```
+
+## API Teste Mock Vercel
+
+```sh
+https://json-server-vercel-liart.vercel.app/usuario
+```
+
+## Vercel Referencias
+
+```sh
 link
 https://www.youtube.com/watch?v=A--aYRbzKdU
 
 Fork Git Vercel
 https://github.com/biulddll/json-server-vercel
+
+```

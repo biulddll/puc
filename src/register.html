@@ -61,9 +61,9 @@
                         </div>
                     </div>
                     <!-- <a class="btn btn-primary" href="template.html"  id="btn" role="button">Cadastrar</a> -->
-                    <button  id="btn"  class="btn btn-primary" type="submit">Entrar</button>
+                    <button  id="btn"  class="btn btn-primary" type="submit">Cadastrar</button>
                   
-                    <button  onclick="onsubmitValideteForm(this);"  class="btn btn-primary" type="submit">Carregar</button>
+                    
                 </form>
             </div>
             <div class="col-md-6">
@@ -97,9 +97,10 @@
     const  myTteste = ()=> {
         document.getElementById("name").value="John";
         document.getElementById("lastname").value="Rocha";
-        document.getElementById("email").value="email@example";
+        document.getElementById("email").value="john@example.com";
         document.getElementById("number").value="123";
         document.getElementById("password").value="password";
+        document.getElementById("confirmpassword").value="password";
         document.getElementById("newsletter").checked = true;
         document.getElementById("agree-term").checked = true;        
     }
@@ -144,10 +145,14 @@
                 email: email,
                 number: number,
                 password: password
-		   } 
-           console.log(data);
-           const response = await setUsuarios(data);
-           console.log(response);
+		   }            
+           try {
+                 setUsuarios(data);
+           } catch (e) {
+            console.log(e.message);
+           };
+           alert('Registro inserido!');
+           window.location.href = "/login.html";
         }
         return valid;
     });
