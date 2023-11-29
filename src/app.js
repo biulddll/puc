@@ -5,12 +5,17 @@ const path = require('path');
 
 const router = express.Router();
 app.use('/',router);
+app.use(express.static(path.join(__dirname)));
 
-router.get('/r', function (req, res) {
-    res.sendFile(path.join(__dirname, 'src', 'login.html'));
+
+
+router.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname,  'login.html'));
 })
 
-app.use(express.static(path.join(__dirname)));
+router.get('/login', function (req, res) {
+    res.sendFile(path.join(__dirname,  'login.html'));
+})
 
 
 app.get('/ongs', (req, res) => {    
