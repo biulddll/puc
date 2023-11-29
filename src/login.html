@@ -57,11 +57,12 @@ const getListaUsuarios = async ()=> {
 }
 
 const getUsuarioLogin = async (email,password)=> {   
+    email = email.toLowerCase().trim();    
     let retorno = false;   
     const users = await getListaUsuarios();    
     if (users != null && users !== undefined && users.length > 0) {
-        users.forEach((user) => {
-            if (user.email == email && user.password == password) {
+        users.forEach((user) => {            
+            if (user.email.toLowerCase().trim() == email && user.password == password) {
                 console.log('entrou');
                 retorno = true;
             }
