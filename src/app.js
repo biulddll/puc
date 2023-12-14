@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname)));
 
 
 router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname,  'login.html'));
+    res.sendFile(path.join(__dirname,  'index.html'));
 })
 
 router.get('/login', function (req, res) {

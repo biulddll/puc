@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
     <title>Register</title>
+    <script src="js/register.js" defer></script> 
 </head>
 <body style="background-color: #6eb8f5;">
     <div class="container col-11 col-md-9" id="form-container">
@@ -81,83 +82,3 @@
 </body>
 </html>
 
-
-<script type="text/javascript">
-    const urlBase = "https://json-server-vercel-liart.vercel.app";    
-    const headers = { "Content-Type": "application/json",}
-    
-   
-    
-    function onsubmitValideteForm(event) {
-        
-        return false;
-    }
-
-     
-    const  myTteste = ()=> {
-        document.getElementById("name").value="John";
-        document.getElementById("lastname").value="Rocha";
-        document.getElementById("email").value="john@example.com";
-        document.getElementById("number").value="123";
-        document.getElementById("password").value="password";
-        document.getElementById("confirmpassword").value="password";
-        document.getElementById("newsletter").checked = true;
-        document.getElementById("agree-term").checked = true;        
-    }
-
-
-    const setUsuarios = async (data)=> {    
-        const url = urlBase + '/usuario';    
-        const response = await  fetch(url, { 
-            method: 'POST', 
-            headers: headers,
-            body: JSON.stringify(data)
-        });
-        const result = await response.json();
-        console.log("Success:", result);
-        return result;
-    }
-    
-       
-    
-    const btn = document.getElementById("btn");    
-    btn.addEventListener("click", async () => {
-        let valid=true;
-        const name = document.getElementById("name").value;
-        const lastname = document.getElementById("lastname").value;
-        const email = document.getElementById("email").value;
-        const number = document.getElementById("number").value;
-        const password = document.getElementById("password").value;                
-    
-        if (email ==null ||email === undefined ||email =='' ){
-            alert('Campo obrigatório [] não preenchido');
-            valid=false;
-        }
-        if (password ==null ||password === undefined ||password =='' ){
-            alert('Campo obrigatório não [] preenchido');
-            valid=false;
-        }
-
-        if(valid){
-            const data =  {
-                name: name,
-                lastname: lastname,
-                email: email,
-                number: number,
-                password: password
-		   }            
-           try {
-                 setUsuarios(data);
-           } catch (e) {
-            console.log(e.message);
-           };
-           alert('Registro inserido!');
-           window.location.href = "/login.html";
-        }
-        return valid;
-    });
-    
-     </script>   
-          
-    
-    

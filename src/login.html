@@ -8,7 +8,7 @@
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous" defer></script>
   <link rel="stylesheet" href="css/styles.css">
-  
+  <script src="js/login.js" defer></script> 
   <title>Login</title>
 </head>
 
@@ -45,80 +45,5 @@
             </div>
         </div>
     </div>
-
- <script type="text/javascript">
-
-const getListaUsuarios = async ()=> {        
-    const urlBase = "https://json-server-vercel-liart.vercel.app";    
-    const headers = { "Content-Type": "application/json",}
-    const url = urlBase + '/usuario';    
-    const lst = await  fetch(url, { method: 'GET', headers: headers});
-    return await lst.json();
-}
-
-const getUsuarioLogin = async (email,password)=> {   
-    email = email.toLowerCase().trim();    
-    let retorno = false;   
-    const users = await getListaUsuarios();    
-    if (users != null && users !== undefined && users.length > 0) {
-        users.forEach((user) => {            
-            if (user.email.toLowerCase().trim() == email && user.password == password) {
-                console.log('entrou');
-                retorno = true;
-            }
-      });      
-    }
-    return retorno;
-}
-
-
-function block(form){
-    return false;
-}
-
-const LoginForm = async ()=> {   
-    let valid=true;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    if (email ==null ||email === undefined ||email =='' ){
-        alert('Campo obrigatório [] não preenchido');
-        valid=false;
-    }
-    if (password ==null ||password === undefined ||password =='' ){
-        alert('Campo obrigatório não [] preenchido');
-        valid=false;
-    }
-    if(valid){
-        const login = await getUsuarioLogin(email, password);
-        if(!login){
-            alert('Usuario ou senha invalido!');
-            valid=false;            
-        }
-        if(login){
-            window.location='template';
-        }
-    }
-    console.log(valid);
-    return valid;
-    
-}
-
-const btn = document.getElementById("btn");
-btn.addEventListener("click", async () => {  
-   LoginForm();   
-});
-
-const  myTteste = () =>{
-    document.getElementById("email").value='john@example.com';
-    document.getElementById("password").value = 'password';
-}
-
- </script>   
-      
-
-
-
-
 </body>
 </html>
